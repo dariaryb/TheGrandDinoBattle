@@ -1,0 +1,387 @@
+```
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Грандиозное Дино-Сражение — Правила</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#150c07;
+  --bg-panel:#241408;
+  --bg-panel-2:#2e1a0c;
+  --line:#4a3016;
+  --gold:#e8b84f;
+  --gold-bright:#ffdb8a;
+  --ember:#ff7a3d;
+  --ember-dim:#c85a26;
+  --crimson:#b5333f;
+  --crimson-dim:#7a2028;
+  --text:#f3e6cf;
+  --text-dim:#c7ac84;
+  --text-faint:#8a7358;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse 900px 500px at 50% -100px, rgba(255,122,61,0.16), transparent 60%),
+    radial-gradient(ellipse 700px 600px at 100% 20%, rgba(181,51,63,0.10), transparent 55%),
+    var(--bg-deep);
+  color:var(--text);
+  font-family:'Manrope',sans-serif;
+  line-height:1.55;
+  min-height:100vh;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px 80px;}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  padding:64px 20px 46px;
+  text-align:center;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255,122,61,0.10), transparent 70%),
+    var(--bg-panel);
+}
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(232,184,79,0.04) 0 1px, transparent 1px 90px);
+  pointer-events:none;
+}
+.hero-eyebrow{
+  font-size:12px; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--ember); font-weight:700; margin-bottom:14px;
+}
+.hero h1{
+  font-family:'Yeseva One',serif;
+  font-size:clamp(30px,6vw,52px);
+  line-height:1.15;
+  margin:0 0 18px;
+  background:linear-gradient(180deg,var(--gold-bright),var(--gold) 55%,var(--ember-dim));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow:0 2px 26px rgba(255,122,61,0.25);
+  letter-spacing:.01em;
+}
+.hero p.lead{
+  color:var(--text-dim); font-size:15px; max-width:520px; margin:0 auto;
+}
+.date-badge{
+  display:inline-flex; align-items:center; gap:10px;
+  margin-top:26px; padding:12px 26px;
+  border:1px solid var(--gold);
+  border-radius:999px;
+  background:linear-gradient(180deg, rgba(232,184,79,0.14), rgba(232,184,79,0.04));
+  font-weight:700; letter-spacing:.02em;
+  box-shadow:0 0 0 1px rgba(0,0,0,.3) inset, 0 8px 24px rgba(255,122,61,.10);
+}
+.date-badge .arrow{color:var(--ember); font-weight:400;}
+.date-badge small{display:block;font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:10px;color:var(--text-faint);margin-bottom:2px;}
+
+/* ---------- SECTION HEADERS ---------- */
+section{margin-top:56px;}
+.sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:22px;}
+.sec-head .torch{
+  font-family:'Yeseva One',serif; font-size:13px; color:var(--ember);
+  border:1px solid var(--ember-dim); border-radius:6px; padding:4px 9px;
+  letter-spacing:.05em; white-space:nowrap;
+}
+.sec-head h2{
+  font-family:'Yeseva One',serif; font-weight:400;
+  font-size:24px; margin:0; color:var(--gold-bright);
+  letter-spacing:.01em;
+}
+.sec-head::after{
+  content:""; flex:1; height:1px;
+  background:linear-gradient(90deg, var(--line), transparent);
+}
+.sec-note{color:var(--text-dim); font-size:14px; margin:-10px 0 20px;}
+
+/* ---------- TIER GRID (levels) ---------- */
+.tier-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px;}
+.tier-card{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:20px 20px 18px;
+  background:linear-gradient(160deg, var(--bg-panel-2), var(--bg-panel));
+  overflow:hidden;
+}
+.tier-card::before{
+  content:attr(data-rank);
+  position:absolute; right:14px; top:10px;
+  font-family:'Yeseva One',serif; font-size:44px;
+  color:rgba(232,184,79,0.08);
+  line-height:1;
+}
+.tier-card .rank-flag{
+  display:inline-block; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+  padding:4px 10px; border-radius:999px; margin-bottom:12px;
+}
+.tier-card h3{
+  font-family:'Yeseva One',serif; font-weight:400; font-size:20px; margin:0 0 8px; color:var(--text);
+}
+.tier-card .range{color:var(--gold); font-weight:700; font-size:14px; margin-bottom:10px;}
+.tier-card .count{
+  display:flex; align-items:center; gap:8px; color:var(--text-dim); font-size:13px;
+  border-top:1px dashed var(--line); padding-top:12px; margin-top:12px;
+}
+.tier-card .count b{color:var(--text); font-size:16px; font-family:'Yeseva One',serif;}
+
+.t1 .rank-flag{background:rgba(181,51,63,0.18); color:#ff8f9a; border:1px solid var(--crimson-dim);}
+.t2 .rank-flag{background:rgba(232,184,79,0.16); color:var(--gold-bright); border:1px solid var(--gold);}
+.t3 .rank-flag{background:rgba(255,122,61,0.14); color:var(--ember); border:1px solid var(--ember-dim);}
+.t4 .rank-flag{background:rgba(120,170,140,0.14); color:#9fd4b3; border:1px solid #3f6d51;}
+.t5 .rank-flag{background:rgba(120,140,200,0.14); color:#a9bdf0; border:1px solid #3d4a7a;}
+
+/* ---------- POINTS RULES ---------- */
+.points-list{display:grid; gap:12px;}
+.points-row{
+  display:grid; grid-template-columns:auto 1fr auto; gap:16px; align-items:center;
+  border:1px solid var(--line); border-radius:12px; padding:16px 18px;
+  background:var(--bg-panel);
+}
+.points-row .icon{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg, rgba(255,122,61,.22), rgba(255,122,61,.06));
+  border:1px solid var(--ember-dim); font-size:18px;
+}
+.points-row .cond{font-weight:700; color:var(--text);}
+.points-row .limit{
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:8px; padding:4px 10px;
+  border:1px solid var(--ember-dim); border-radius:999px;
+  background:rgba(255,122,61,0.10);
+  color:var(--ember); font-size:12px; font-weight:700; letter-spacing:.01em;
+}
+.points-row .limit .lbl{color:var(--text-faint); font-weight:700; text-transform:uppercase; font-size:10px; letter-spacing:.08em;}
+.points-row .score{
+  font-family:'Yeseva One',serif; color:var(--gold-bright); font-size:17px; white-space:nowrap;
+}
+
+/* ---------- REWARD ACCORDIONS ---------- */
+.acc{border:1px solid var(--line); border-radius:14px; margin-bottom:12px; overflow:hidden; background:var(--bg-panel);}
+.acc-head{
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:16px 20px; background:linear-gradient(180deg, rgba(232,184,79,.06), transparent);
+  border:none; cursor:pointer; text-align:left; color:var(--text); font-family:'Manrope',sans-serif;
+}
+.acc-head .lvname{display:flex;align-items:center;gap:12px;}
+.acc-head .badge{
+  font-family:'Yeseva One',serif; font-size:15px; color:var(--gold-bright);
+}
+.acc-head .sub{font-size:12px; color:var(--text-faint); font-weight:500;}
+.acc-body{overflow:visible;}
+.acc-body-inner{padding:0 20px 20px;}
+
+table.reward{width:100%; border-collapse:collapse; font-size:13.5px;}
+table.reward thead th{
+  text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.06em;
+  color:var(--text-faint); font-weight:700; padding:8px 10px; border-bottom:1px solid var(--line);
+}
+table.reward tbody td{padding:11px 10px; border-bottom:1px solid rgba(74,48,22,0.5); color:var(--text);}
+table.reward tbody tr:last-child td{border-bottom:none;}
+table.reward td.rk{font-family:'Yeseva One',serif; color:var(--gold); width:34px;}
+table.reward td.pts{color:var(--gold-bright); font-weight:700;}
+table.reward td.beans{color:#ffd08a;}
+table.reward td.dino{color:var(--text-dim);}
+table.reward tbody tr:hover{background:rgba(232,184,79,0.04);}
+
+/* legendary special tint */
+.acc[data-lv="legend"] .acc-head .badge{color:#ff9aa4;}
+.acc[data-lv="legend"]{border-color:var(--crimson-dim);}
+
+/* ---------- FOOTNOTE ---------- */
+.foot{margin-top:60px; padding-top:22px; border-top:1px solid var(--line); color:var(--text-faint); font-size:12.5px; text-align:center;}
+
+@media(max-width:520px){
+  .points-row{grid-template-columns:auto 1fr; }
+  .points-row .score{grid-column:2; justify-self:start; margin-top:4px;}
+  table.reward{font-size:12px;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <p class="lead">Правила мероприятия: уровни ведущих, правила начисления баллов и награды.</p>
+  <div class="date-badge">
+    <div><small>Начало</small>19 августа, 00:00:00</div>
+    <span class="arrow">→</span>
+    <div><small>Окончание</small>25 августа, 23:59:59</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="levels">
+    <div class="sec-head"><span class="torch">§1</span><h2>Уровни ведущих</h2></div>
+    <p class="sec-note">Уровень определяется по количеству бобов, полученных за июль 2026 года.</p>
+    <div class="tier-grid">
+      <div class="tier-card t1" data-rank="I">
+        <span class="rank-flag">Уровень 1</span>
+        <h3>Легенда</h3>
+        <div class="range">более 260 000 бобов / мес.</div>
+      </div>
+      <div class="tier-card t2" data-rank="II">
+        <span class="rank-flag">Уровень 2</span>
+        <h3>Элита</h3>
+        <div class="range">100 000 – 260 000 бобов / мес.</div>
+      </div>
+      <div class="tier-card t3" data-rank="III">
+        <span class="rank-flag">Уровень 3</span>
+        <h3>Мастер</h3>
+        <div class="range">50 000 – 100 000 бобов / мес.</div>
+      </div>
+      <div class="tier-card t4" data-rank="IV">
+        <span class="rank-flag">Уровень 4</span>
+        <h3>Эксперт</h3>
+        <div class="range">10 000 – 50 000 бобов / мес.</div>
+      </div>
+      <div class="tier-card t5" data-rank="V">
+        <span class="rank-flag">Уровень 5</span>
+        <h3>Новичок</h3>
+        <div class="range">0 – 10 000 бобов / мес.<br>+ новые официальные ведущие (регистрация 01.08–17.08)</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="points">
+    <div class="sec-head"><span class="torch">§2</span><h2>Начисление баллов</h2></div>
+    <div class="points-list">
+      <div class="points-row">
+        <div class="icon">⏱</div>
+        <div>
+          <div class="cond">1 минута трансляции</div>
+          <div class="limit"><span class="lbl">Лимит</span> 180 баллов в день (не более 3 часов трансляции в день)</div>
+        </div>
+        <div class="score">1 балл</div>
+      </div>
+      <div class="points-row">
+        <div class="icon">💎</div>
+        <div>
+          <div class="cond">Получение 100 бобов</div>
+          <div class="limit"><span class="lbl">Лимит</span> без ограничений</div>
+        </div>
+        <div class="score">1 балл</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rewards">
+    <div class="sec-head"><span class="torch">§3</span><h2>Награды по уровням</h2></div>
+    <p class="sec-note">Награда начисляется по наивысшему порогу баллов, который ведущий преодолел за период ивента. Все таблицы с наградами раскрыты.</p>
+
+    <!-- Legendary -->
+    <div class="acc" data-lv="legend">
+      <div class="acc-head">
+        <div class="lvname"><span class="badge">Легендарный уровень</span><span class="sub">5 порогов</span></div>
+        </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <table class="reward">
+          <thead><tr><th>#</th><th>Порог баллов</th><th>Награда, бобы</th><th>Награда Дино</th></tr></thead>
+          <tbody>
+            <tr><td class="rk">1</td><td class="pts">9000</td><td class="beans">150 000</td><td class="dino">на выбор — любые 4</td></tr>
+            <tr><td class="rk">2</td><td class="pts">8500</td><td class="beans">100 000</td><td class="dino">на выбор — любые 3</td></tr>
+            <tr><td class="rk">3</td><td class="pts">8000</td><td class="beans">70 000</td><td class="dino">на выбор — любые 2</td></tr>
+            <tr><td class="rk">4</td><td class="pts">7000</td><td class="beans">55 000</td><td class="dino">на выбор — 1</td></tr>
+            <tr><td class="rk">5</td><td class="pts">6000</td><td class="beans">40 000</td><td class="dino">1 Панда-Дино</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+    </div>
+
+    <!-- Elite -->
+    <div class="acc" data-lv="elite">
+      <div class="acc-head">
+        <div class="lvname"><span class="badge">Элитный уровень</span><span class="sub">5 порогов</span></div>
+        </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <table class="reward">
+          <thead><tr><th>#</th><th>Порог баллов</th><th>Награда, бобы</th><th>Награда Дино</th></tr></thead>
+          <tbody>
+            <tr><td class="rk">1</td><td class="pts">4000</td><td class="beans">20 000</td><td class="dino">на выбор — любые 4</td></tr>
+            <tr><td class="rk">2</td><td class="pts">3500</td><td class="beans">15 000</td><td class="dino">на выбор — любые 3</td></tr>
+            <tr><td class="rk">3</td><td class="pts">3400</td><td class="beans">10 000</td><td class="dino">на выбор — любые 2</td></tr>
+            <tr><td class="rk">4</td><td class="pts">3200</td><td class="beans">8 000</td><td class="dino">на выбор — 1</td></tr>
+            <tr><td class="rk">5</td><td class="pts">3100</td><td class="beans">5 000</td><td class="dino">1 Панда-Дино</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+    </div>
+
+    <!-- Expert -->
+    <div class="acc" data-lv="expert">
+      <div class="acc-head">
+        <div class="lvname"><span class="badge">Экспертный уровень</span><span class="sub">5 порогов</span></div>
+        </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <table class="reward">
+          <thead><tr><th>#</th><th>Порог баллов</th><th>Награда, бобы</th><th>Награда Дино</th></tr></thead>
+          <tbody>
+            <tr><td class="rk">1</td><td class="pts">3800</td><td class="beans">15 000</td><td class="dino">на выбор — любые 3</td></tr>
+            <tr><td class="rk">2</td><td class="pts">3500</td><td class="beans">12 000</td><td class="dino">на выбор — любые 2</td></tr>
+            <tr><td class="rk">3</td><td class="pts">3000</td><td class="beans">7 000</td><td class="dino">на выбор — 1</td></tr>
+            <tr><td class="rk">4</td><td class="pts">2500</td><td class="beans">4 000</td><td class="dino">1 Панда-Дино</td></tr>
+            <tr><td class="rk">5</td><td class="pts">1800</td><td class="beans">2 000</td><td class="dino">1 Обычный Дино (мальчик или девочка на выбор)</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+    </div>
+
+    <!-- Advanced -->
+    <div class="acc" data-lv="advanced">
+      <div class="acc-head">
+        <div class="lvname"><span class="badge">Продвинутый уровень</span><span class="sub">5 порогов</span></div>
+        </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <table class="reward">
+          <thead><tr><th>#</th><th>Порог баллов</th><th>Награда, бобы</th><th>Награда Дино</th></tr></thead>
+          <tbody>
+            <tr><td class="rk">1</td><td class="pts">3000</td><td class="beans">10 000</td><td class="dino">на выбор — любые 2</td></tr>
+            <tr><td class="rk">2</td><td class="pts">2800</td><td class="beans">8 000</td><td class="dino">на выбор — 1</td></tr>
+            <tr><td class="rk">3</td><td class="pts">2500</td><td class="beans">6 000</td><td class="dino">1 Панда-Дино + стикеры</td></tr>
+            <tr><td class="rk">4</td><td class="pts">2000</td><td class="beans">3 000</td><td class="dino">1 Панда-Дино</td></tr>
+            <tr><td class="rk">5</td><td class="pts">1500</td><td class="beans">1 000</td><td class="dino">1 Обычный Дино (мальчик или девочка на выбор)</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+    </div>
+
+    <!-- Beginner -->
+    <div class="acc" data-lv="beginner">
+      <div class="acc-head">
+        <div class="lvname"><span class="badge">Начальный уровень</span><span class="sub">5 порогов</span></div>
+        </div>
+      <div class="acc-body"><div class="acc-body-inner">
+        <table class="reward">
+          <thead><tr><th>#</th><th>Порог баллов</th><th>Награда, бобы</th><th>Награда Дино</th></tr></thead>
+          <tbody>
+            <tr><td class="rk">1</td><td class="pts">2500</td><td class="beans">6 000</td><td class="dino">на выбор — любые 2</td></tr>
+            <tr><td class="rk">2</td><td class="pts">2000</td><td class="beans">4 000</td><td class="dino">на выбор — 1</td></tr>
+            <tr><td class="rk">3</td><td class="pts">1800</td><td class="beans">2 500</td><td class="dino">1 Панда-Дино + стикеры</td></tr>
+            <tr><td class="rk">4</td><td class="pts">1500</td><td class="beans">1 500</td><td class="dino">1 Панда-Дино</td></tr>
+            <tr><td class="rk">5</td><td class="pts">1300</td><td class="beans">200</td><td class="dino">1 Обычный Дино (мальчик или девочка на выбор)</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+    </div>
+
+  </section>
+
+  <div class="foot">Правила мероприятия действительны на весь указанный период</div>
+</div>
+
+
+
+</body>
+</html>
+```
